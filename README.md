@@ -1,4 +1,4 @@
-# react-setup-w3
+# Potato
 A simple api docs and dummy responder tool
 
 #### take a pull
