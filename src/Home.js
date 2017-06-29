@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import injectSheet from 'react-jss';
-import JsonEditor from './jsonEditor/jsonEditor';
+import JsonEditor from './jsonEditor/JsonEditor';
 
 const styles = {
   heading: {
