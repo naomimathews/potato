@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import injectSheet from 'react-jss';
+import JsonEditor from './jsonEditor/jsonEditor';
 
 const styles = {
   heading: {
@@ -20,6 +21,8 @@ export default class Home extends React.Component {
     return (
       <div>
         <h1 className={classes.heading}>You are on the home page</h1>
+        <JsonEditor/>
+        <Link to="/about" >about</Link>
       </div>
     );
   }
