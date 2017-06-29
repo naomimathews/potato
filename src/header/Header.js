@@ -1,12 +1,13 @@
 import React from 'react';
 import injectSheet from 'react-jss';
-import cssConstants from '../common/cssConstants';
+import {cssConstants} from '../common/cssConstants';
 
 const styles = {
   container : {
     background: cssConstants.darkBlue,
     color: cssConstants.white,
-    position: 'relative'
+    position: 'relative',
+    padding:'8px 10px'
   },
   logo: {
     margin:0
@@ -14,7 +15,9 @@ const styles = {
   settingsBtn :{
     position: 'absolute',
     top: '50%',
-    transform : 'translate3d'
+    right:'10px',
+    transform : 'translateY(-50%)',
+    textTransform: 'capitalize'
   }
 
 }
@@ -23,14 +26,17 @@ const styles = {
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
+    console.log(cssConstants);
   }
 
   render() {
     const {classes} = this.props;
     return (
-      <div>
-        <h1 className={classes.heading}>You are on the home page</h1>
+      <div className={classes.container}>
+        <h1 className={classes.logo}>Logo</h1>
+        <div className={classes.settingsBtn}>Settings</div>
       </div>
+
     );
   }
 }

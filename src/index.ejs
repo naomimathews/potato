@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/5.7.2/jsoneditor.min.css" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      body{
+        margin:0;
+      }
+      *{
+        box-sizing: border-box;
+      }
+    </style>
   </head>
   <body>
     <% if (htmlWebpackPlugin.options.appMountId) { %>

@@ -1,11 +1,12 @@
 import React from 'react';
 import injectSheet from 'react-jss';
-import JsonEditor from './jsonEditor/JsonEditor';
+import Header from './header/Header';
+import SideMenu from './sideMenu/SideMenu';
+import ApiViewer from './apiViewer/ApiViewer';
 
 const styles = {
-  heading: {
-    fontWeight: 'bold',
-    color: 'red'
+  mainContainer: {
+    display: 'flex'
   }
 }
 
@@ -19,8 +20,11 @@ export default class Home extends React.Component {
     const {classes} = this.props;
     return (
       <div>
-        <h1 className={classes.heading}>You are on the home page</h1>
-        <JsonEditor/>
+        <Header/>
+        <div className={classes.mainContainer}>
+          <SideMenu />
+          <ApiViewer />
+        </div>
       </div>
     );
   }

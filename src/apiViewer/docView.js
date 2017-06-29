@@ -2,17 +2,14 @@ import React from 'react';
 import injectSheet from 'react-jss';
 import {cssConstants} from '../common/cssConstants';
 
-const styles = {
-  container : {
-    background: cssConstants.lightPurple,
-    minHeight: 'calc(100vh - 53px)',
-    width: '250px'
-  }
+import JsonEditor from '../jsonEditor/JsonEditor';
+import TextEditor from '../common/textEditor';
 
+const styles = {
 }
 
 @injectSheet(styles)
-export default class SideMenu extends React.Component {
+export default class DocView extends React.Component {
   constructor(props) {
     super(props);
     console.log(cssConstants);
@@ -21,8 +18,10 @@ export default class SideMenu extends React.Component {
   render() {
     const {classes} = this.props;
     return (
-      <div className={classes.container}>
-
+      <div>
+              <h1>working apiviewer</h1>
+        <JsonEditor />
+        <TextEditor />
       </div>
 
     );
