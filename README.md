@@ -1,5 +1,5 @@
 # react-setup-w3
-React setup with webpack 3
+A simple api docs and dummy responder tool
 
 #### take a pull
 #### npm install
