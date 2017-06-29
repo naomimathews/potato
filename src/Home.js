@@ -21,7 +21,6 @@ export default class Home extends React.Component {
       <div>
         <h1 className={classes.heading}>You are on the home page</h1>
         <JsonEditor/>
-        <Link to="/about" >about</Link>
       </div>
     );
   }
