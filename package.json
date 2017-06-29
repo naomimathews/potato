@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "classnames": "^2.2.5",
+    "jsoneditor": "^5.7.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-helmet": "^5.1.3",
