@@ -1,7 +1,7 @@
 {
   "name": "potato",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple api docs and dummy responder tool",
   "main": "index.js",
   "dependencies": {
     "classnames": "^2.2.5",
