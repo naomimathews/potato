@@ -2,6 +2,8 @@ import React from 'react';
 import injectSheet from 'react-jss';
 import {cssConstants} from '../common/cssConstants';
 import Button from '../common/Button';
+import ApiListItem from './ApiListItem';
+
 
 const styles = {
   container : {
@@ -11,46 +13,15 @@ const styles = {
     fontSize: '16px',
     padding: '20px 10px'
   },
-  apiListContainer:{
-    'marginTop': '20px'
+  newApi:{
+    padding:'10px',
+    borderBottom:'solid 1px '+ cssConstants.linePurple,
+    margin:'0 -10px',
+    color:cssConstants.purple
   }
 }
 
 @injectSheet(styles)
-
-class ApiListItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const {classes} = this.props;
-
-    return (
-      <div className={classes.apiListContainer}>{this.props.api.name}</div>
-
-    );
-  }
-}
-
-class ApiList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const {classes} = this.props;
-    var apiCtaList= this.props.currEx.apiList.map((api, index) => {
-      return <ApiListItem api={api} currApiId={this.props.currApiId}/>
-    });
-    return (
-      <div className={classes.apiListContainer}>
-        {apiCtaList}
-      </div>
-
-    );
-  }
-}
 
 export default class SideMenu extends React.Component {
   constructor(props) {
@@ -59,10 +30,13 @@ export default class SideMenu extends React.Component {
 
   render() {
     const {classes} = this.props;
+    var apiList= this.props.apiList.map((api, index) => {
+      return <ApiListItem api={api} currApiId={this.props.currApiId} key={api.id}/>
+    });
     return (
       <div className={classes.container}>
-        <Button text="Add API" btnColor="purple"/>
-        <ApiList apiList={this.props.apiList} />
+        <div className={classes.newApi}>+ Add API</div>
+        {apiList}
       </div>
 
     );

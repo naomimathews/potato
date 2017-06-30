@@ -6,6 +6,8 @@ var cssConstants = {
   darkBlue: "#101935",
   purple: "#564787",
   lightPurple: "#DBCBD8",
+  linePurple:"#c6b6c3",
+  highlightPurple:"#c4b4c1",
 
   /** spacing variables **/
   spacing1: '10px',
