@@ -1,54 +1,56 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import {cssConstants} from '../common/cssConstants';
+import classNames from 'classnames';
 
 const styles = {
   container : {
-    background: cssConstants.darkBlue,
-    padding:'2px 0',
+    padding:'3px 0',
     position:'relative'
   },
   triggerContainer : {
-    height: '10px',
-    width: '20px',
-    borderRadius: '100px'
-  }
+    height: '12px',
+    width: '28px',
+    borderRadius: '100px',
+    background: cssConstants.toggleBg,
+  },
   trigger: {
-    height: '14px',
-    width: '14px',
+    height: '18px',
+    width: '18px',
     borderRadius:'50%',
     background: cssConstants.toggleInactive,
     position: 'absolute',
-    left:0,
-    top:0,
+    left: 0,
+    top: 0,
     transition:'left 200ms'
   },
   triggerActive : {
-    left:'7px',
+    left: '10px',
     background: cssConstants.toggleActive,
   }
 }
 
 @injectSheet(styles)
-export default class Header extends React.Component {
+export default class ToggleButton extends React.Component {
   constructor(props) {
     super(props);
-    this.state({
-      toggleState : this.props.toggleState
-    })
+    this.state = {
+      toggleState : this.props.toggleState || false
+    };
   }
   changeToggleState(e){
-    setState({toggleState: !this.state.toggleState})
+    this.setState({toggleState: !this.state.toggleState});
+    if(this.props.onChange)this.props.onChange(this.state.toggleState);
   }
   render() {
     const {classes} = this.props;
     let trigger = classNames({
-      trigger: true,
-      triggerActive: this.state.toggleState
+      [classes.trigger]: true,
+      [classes.triggerActive]: this.state.toggleState
     })
     return (
       <div className={classes.container}>
-        <div className={classes.triggercontainer} onClick={this.changeToggleState}></div>
+        <div className={classes.triggerContainer} onClick={this.changeToggleState.bind(this)}></div>
         <div className={trigger}></div>
       </div>
 

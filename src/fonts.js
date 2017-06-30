@@ -1,5 +1,6 @@
 import jss from 'jss'
 import preset from 'jss-preset-default'
+import {cssConstants} from './common/cssConstants';
 
 jss.setup(preset());
 
@@ -32,6 +33,16 @@ const sheet = jss.createStyleSheet({
       margin: '0',
       fontFamily: 'Proxima',
       fontWeight: 'normal'
+    },
+    'div.jsoneditor-menu a.jsoneditor-poweredBy': {
+      display: 'none'
+    },
+    'div.jsoneditor-menu': {
+      backgroundColor: cssConstants.darkBlue,
+      borderBottom: '1px solid '+cssConstants.darkBlue
+    },
+    'div.jsoneditor': {
+      border: '1px solid '+cssConstants.darkBlue
     }
   }
 })

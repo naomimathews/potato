@@ -11,8 +11,8 @@ var cssConstants = {
   grey: "#ccc",
 
   toggleBg: "#dcdddd",
-  toggleActive: "#ffffff",
-  toggleInactive: "#6d7083" ,
+  toggleActive: "#6d7083",
+  toggleInactive: "#CECECE" ,
 
   /** spacing variables **/
   spacing1: '10px',
