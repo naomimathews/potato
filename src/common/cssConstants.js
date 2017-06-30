@@ -6,9 +6,13 @@ var cssConstants = {
   darkBlue: "#101935",
   purple: "#564787",
   lightPurple: "#DBCBD8",
-  linePurple:"#c6b6c3",
-  highlightPurple:"#c4b4c1",
-  grey:"#ccc",
+  linePurple: "#c6b6c3",
+  highlightPurple: "#c4b4c1",
+  grey: "#ccc",
+
+  toggleBg: "#dcdddd",
+  toggleActive: "#ffffff",
+  toggleInactive: "#6d7083" ,
 
   /** spacing variables **/
   spacing1: '10px',
