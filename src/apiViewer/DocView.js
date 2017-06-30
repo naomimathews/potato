@@ -5,6 +5,7 @@ import {cssConstants} from '../common/cssConstants';
 import JsonEditor from '../jsonEditor/JsonEditor';
 import TextEditor from '../common/textEditor';
 import InputBoxPreview from '../common/InputBoxPreview';
+import ToggleButton from './ToggleButton';
 
 const styles = {
 }
@@ -39,6 +40,7 @@ export default class DocView extends React.Component {
     const {classes} = this.props;
     return (
       <div>
+        <ToggleButton />
         <InputBoxPreview
           textValue = {this.props.api.name}
           onApiChange={this.props.onApiChange}/>

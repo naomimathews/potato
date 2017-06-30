@@ -26,9 +26,12 @@ export default class InputBoxPreview extends React.Component {
     }
   }
   onChange = (e) =>{
-    this.setState({value:this.value})
-    alert(this.state.value);
-    //this.props.onApiChange("abcd")
+    let changedText = e.target.value;
+    this.setState({value: changedText});
+    this.props.onApiChange({name : changedText})
+  }
+  toggleEdit = (e) =>{
+    this.setState({isReadOnly: !this.state.isReadOnly});
   }
 
   render() {
@@ -37,8 +40,20 @@ export default class InputBoxPreview extends React.Component {
       [classes.input]: true,
       [classes.disabledView] : this.state.isReadOnly
     });
+    var inputHtml,editTrigger;
+    if(this.state.isReadOnly){
+      inputHtml = <input className={inputClass} value={this.state.value} onChange = {this.onChange} disabled />;
+      editTrigger = <span onClick={this.toggleEdit}>Edit</span>;
+    }
+    else{
+      inputHtml =  <input className={inputClass} value={this.state.value} onChange = {this.onChange} />;
+      editTrigger = <span onClick={this.toggleEdit}>Done</span>;
+    }
     return (
-      <input className={inputClass} value={this.state.value} onChange = {this.onChange}/>
+      <div>
+        {inputHtml}
+        {editTrigger}
+      </div>
     );
   }
 }
