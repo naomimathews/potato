@@ -35,19 +35,31 @@ export default class MainTab extends React.Component {
 
   render() {
     const {classes} = this.props;
-    var tabs= this.props.tabs.map((tab, index) => {
+    var tabs = this.props.tabs.map((tab, index) => {
       let tabClass = classNames({
         [classes.tab]: true,
         [classes.selectedTab] : tab.viewId == this.props.selectedTabId,
         [classes.tab1] : tab.viewId==1
       });
 
-      return <div className={tabClass} key={tab.id}>{tab.name}</div>
+      return (<div className={tabClass} key={tab.viewId}>{tab.name} onClick={ () => { this.props.changeTab(tab.viewId) }} ></div>);
     });
 
     return (
       <div className={classes.container}>
-        {tabs}
+        {
+          this.props.tabs.map((tab, index) => {
+            let tabClass = classNames({
+              [classes.tab]: true,
+              [classes.selectedTab] : tab.viewId == this.props.selectedTabId,
+              [classes.tab1] : tab.viewId==1
+            });
+
+            return (
+              <div className={tabClass} key={tab.viewId} onClick={ () => { this.props.changeTab(tab.viewId) }}>{tab.name}</div>
+            );
+          })
+        }
       </div>
 
     );
