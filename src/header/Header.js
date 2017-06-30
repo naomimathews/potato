@@ -19,7 +19,7 @@ const styles = {
     right:'10px',
     transform : 'translateY(-50%)',
     textTransform: 'capitalize',
-    fontFamily:'Ubuntu-Bold'
+    fontFamily:'Ubuntu'
   }
 
 }
