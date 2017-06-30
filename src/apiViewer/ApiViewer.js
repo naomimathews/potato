@@ -50,7 +50,11 @@ export default class SideMenu extends React.Component {
     return (
       <div className={classes.container}>
         <MainTab tabs={this.state.tabs} selectedTabId={this.state.selectedViewId} changeTab={this.changeTab.bind(this)} />
-        {this.state.selectedViewId == 2? <TestView api={this.state.api} onApiChange={this.onApiChange.bind(this)}/> : <DocView api={this.state.api} onApiChange={this.onApiChange.bind(this)}/>}
+        {
+          this.state.selectedViewId == 2 ?
+            <TestView api={this.state.api} onApiChange={this.onApiChange.bind(this)}/> :
+            <DocView api={this.state.api} onApiChange={this.onApiChange.bind(this)}/>
+        }
       </div>
 
     );

@@ -38,7 +38,7 @@ export default class InputBoxPreview extends React.Component {
       [classes.disabledView] : this.state.isReadOnly
     });
     return (
-      <input className={inputClass} value={this.state.value} onChange = {this.onChange()}/>
+      <input className={inputClass} value={this.state.value} onChange = {this.onChange}/>
     );
   }
 }
