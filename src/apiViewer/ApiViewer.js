@@ -18,16 +18,30 @@ export default class SideMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tabs:[{viewId:1, name:"Docs View"}, {viewId:2, name:"Test View"}],
-      selectedViewId:1
+      tabs:[
+        {
+          viewId: 1,
+          name: "Docs View"
+        }, {
+          viewId: 2,
+          name: "Test View"
+        }
+      ],
+      selectedViewId: 1
     }
+  }
+
+  changeTab = (tab) => {
+    this.setState({
+      selectedViewId: tab
+    })
   }
 
   render() {
     const {classes} = this.props;
     return (
       <div className={classes.container}>
-        <MainTab tabs={this.state.tabs} selectedTabId={this.state.selectedViewId} />
+        <MainTab tabs={this.state.tabs} selectedTabId={this.state.selectedViewId} changeTab={this.changeTab.bind(this)} />
         <DocView />
       </div>
 
