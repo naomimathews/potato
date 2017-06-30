@@ -11,7 +11,11 @@ const styles = {
     lineHeight:"40px",
     color:cssConstants.white,
     padding:"0 10px",
-    minWidth:"100px"
+    minWidth:"100px",
+    border:'none',
+    fontWeight:"bold",
+    fontSize:'16px',
+    fontFamily:'Ubuntu'
   },
   purpleBtn : {
     background: cssConstants.purple,

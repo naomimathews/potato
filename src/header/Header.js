@@ -7,11 +7,11 @@ const styles = {
     background: cssConstants.darkBlue,
     color: cssConstants.white,
     position: 'relative',
-    padding:'3px 10px',
+    padding:'7px 10px',
     height:"54px"
   },
   logo: {
-    height:"48px"
+    height:"40px"
   },
   settingsBtn :{
     position: 'absolute',

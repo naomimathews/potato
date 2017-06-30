@@ -12,7 +12,7 @@ const sheet = jss.createStyleSheet({
       fontStyle: 'normal'
     },
     '@font-face': {
-      fontFamily: 'Ubuntu-Bold',
+      fontFamily: 'Ubuntu',
       src: 'url("../assets/fonts/Ubuntu-B.ttf") format("ttf")',
       fontWeight: 'bold',
       fontStyle: 'normal',
