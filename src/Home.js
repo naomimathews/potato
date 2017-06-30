@@ -6,7 +6,8 @@ import ApiViewer from './apiViewer/ApiViewer';
 
 const styles = {
   mainContainer: {
-    display: 'flex'
+    display: 'flex',
+    alignItems:'stretch'
   }
 }
 
@@ -14,7 +15,13 @@ const styles = {
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      apiList:[
+        {id:1, name:"Get recipes", type:"GET", header:{contentType :"application/json"}, sampleResponse: {recipes:[{id:100, name:"Chicken curry", ingredients :["chicken"]}]} },
+        {id:2, name:"Add recipes", type:"POST", header:{contentType :"application/json"}, sampleRequest: {name:"Scallops with apple gastrique", ingredients :["scallops"]}, sampleResponse:{message:'Recipe added successfully', status:1, data:{id:123}}}
+      ]}
   }
+
 
   render() {
     const {classes} = this.props;
@@ -22,8 +29,8 @@ export default class Home extends React.Component {
       <div>
         <Header/>
         <div className={classes.mainContainer}>
-          <SideMenu />
-          <ApiViewer />
+          <SideMenu apiList={this.state.apiList}/>
+          <ApiViewer apiList={this.state.apiList}/>
         </div>
       </div>
     );
