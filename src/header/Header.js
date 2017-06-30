@@ -18,7 +18,8 @@ const styles = {
     top: '50%',
     right:'10px',
     transform : 'translateY(-50%)',
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
+    fontFamily:'Ubuntu-Bold'
   }
 
 }
@@ -34,7 +35,7 @@ export default class Header extends React.Component {
     const {classes} = this.props;
     return (
       <div className={classes.container}>
-        <img src={require('../../assets/logo.png')} className={classes.logo}/>
+        <img src={require('../../assets/images/logo.png')} className={classes.logo}/>
         <div className={classes.settingsBtn}>Settings</div>
       </div>
 
