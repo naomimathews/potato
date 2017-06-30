@@ -71,10 +71,9 @@ module.exports = {
         ]
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          'file-loader'
-        ]
+        test: /\.(woff|woff2|eot|ttf|svg|otf)(\?\S*)?$/,
+        exclude: /node_modules/,
+        use: ['url-loader?limit=1024&name=[path][name].[ext]']
       }
     ]
   },
