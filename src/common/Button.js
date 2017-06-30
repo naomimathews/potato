@@ -30,9 +30,9 @@ export default class Button extends React.Component {
   render() {
     const {classes} = this.props;
     let btnClass = classNames({
-      btn: true,
-      purpleBtn : this.props.style == "purple",
-      blueBtn : this.props.style == "blue",
+      [classes.btn]: true,
+      [classes.purpleBtn] : this.props.btnColor == "purple",
+      [classes.blueBtn] : this.props.btnColor == "blue",
     });
 
     return (

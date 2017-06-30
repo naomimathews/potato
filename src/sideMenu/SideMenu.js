@@ -22,7 +22,7 @@ export default class SideMenu extends React.Component {
     const {classes} = this.props;
     return (
       <div className={classes.container}>
-        <Button text="Add API" style="purple"/>
+        <Button text="Add API" btnColor="purple"/>
       </div>
 
     );
