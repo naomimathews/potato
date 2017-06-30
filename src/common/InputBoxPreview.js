@@ -7,7 +7,9 @@ import classNames from 'classnames';
 const styles = {
   input:{
     border:'solid 1px '+cssConstants.grey,
-    borderRadius:'5px'
+    borderRadius: '5px',
+    fontWeight: 'bold',
+    fontSize: '28px'
   },
   disabledView:{
     border:'none',

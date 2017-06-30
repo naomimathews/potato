@@ -7,17 +7,18 @@ import ApiListItem from './ApiListItem';
 
 const styles = {
   container : {
-    background: cssConstants.lightPurple,
+    background:  'linear-gradient(to bottom, #717989, #2e3446)',
     minHeight: 'calc(100vh - 55px)',
     width: '250px',
     fontSize: '16px',
-    padding: '20px 10px'
+    color:cssConstants.white
+
   },
   newApi:{
-    padding:'10px',
-    borderBottom:'solid 1px '+ cssConstants.linePurple,
-    margin:'0 -10px',
-    color:cssConstants.purple
+    background:cssConstants.greenGradient,
+    height:'70px',
+    lineHeight:'70px',
+    color:'white'
   }
 }
 
