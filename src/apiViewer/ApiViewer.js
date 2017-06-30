@@ -29,7 +29,8 @@ export default class SideMenu extends React.Component {
         }
       ],
       selectedViewId: 1,
-      api:this.props.currApi,
+      api: this.props.currApi,
+      isDocsEdited: false
 
     }
   }
@@ -42,7 +43,7 @@ export default class SideMenu extends React.Component {
 
   onApiChange = (apiChanges) => {
     let changeApiObj = Object.assign({}, this.state.api, apiChanges);
-    this.setState({api:changeApiObj});
+    this.setState({api: changeApiObj, isDocsEdited: true});
   }
 
   render() {

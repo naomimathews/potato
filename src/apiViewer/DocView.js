@@ -15,26 +15,15 @@ const styles = {
 export default class DocView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      request: {
-        a: 1,
-        str: 'good',
-        arr: [{
-          1: 'one',
-          2: 'two',
-          3: 'three'
-        }]
-      },
-      requestEditState: {}
-    }
   }
 
   onRequestChange = (value) => {
-    this.setState({
-      requestEditState: value
-    });
+    this.props.onApiChange({sampleRequest : value})
   }
 
+  onResponseChange = (value) => {
+    this.props.onApiChange({sampleResponse : value})
+  }
   // set requestEditState = request when you want to save the values
 
   onChangeHeaders = (headers) => {
@@ -49,10 +38,16 @@ export default class DocView extends React.Component {
           textValue = {this.props.api.name}
           onApiChange={this.props.onApiChange}/>
         <KeyValue onChange={this.onChangeHeaders} />
+        <div>Request</div>
         <JsonEditor
-          value={this.state.request}
+          value={this.props.api.sampleRequest}
           onChange={this.onRequestChange.bind(this)}
           editable={true} />
+        <div>Response</div>
+        <JsonEditor
+            value={this.props.api.sampleResponse}
+            onChange={this.onResponseChange.bind(this)}
+            editable={true} />
         <TextEditor />
       </div>
 

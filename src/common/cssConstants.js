@@ -3,11 +3,8 @@ var cssConstants = {
   /** color variables **/
   black: "#333333",
   white: "#FFFFFF",
-  darkBlue: "#101935",
-  purple: "#564787",
-  lightPurple: "#DBCBD8",
-  linePurple: "#c6b6c3",
-  highlightPurple: "#c4b4c1",
+  darkBlue: "#3e4156",
+  greenGradient :'linear-gradient(to bottom, #81d0b2, #23ac74)',
   grey: "#ccc",
 
   toggleBg: "#dcdddd",

@@ -3,14 +3,16 @@ import injectSheet from 'react-jss';
 import {cssConstants} from '../common/cssConstants';
 import classNames from 'classnames';
 
+import ToggleButton from '../common/ToggleButton';
+
 const styles = {
   apiListItem:{
     padding:'10px',
-    borderBottom:'solid 1px '+ cssConstants.linePurple,
+    borderBottom:'solid 1px '+ cssConstants.darkBlue,
     margin:'0 -10px'
   },
   selectedApi:{
-    background:cssConstants.linePurple
+    background:cssConstants.darkBlue
   }
 }
 
@@ -28,7 +30,10 @@ export default class ApiListItem extends React.Component {
       [classes.selectedApi] : this.props.api.id == this.props.currApiId
     });
     return (
-      <div className={btnClass}>{this.props.api.name}</div>
+      <div className={btnClass}>
+        <div >{this.props.api.name}</div>
+        <ToggleButton />
+      </div>
 
 
     );

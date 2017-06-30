@@ -95,8 +95,8 @@ export default class KeyValue extends React.Component {
       function renderItem(item) {
         items.push(
           <li key={item} className={classes.item}>
-            <input className={classes.input} value={pair[item].key} ref={'key'+item} placeholder="key" onInput={(e) => this.changeValue(item, 'key', e.target.value)}  />
-            <input className={classes.input} value={pair[item].value} ref={'value'+item} placeholder="value" onInput={(e) => this.changeValue(item, 'value', e.target.value)}  />
+            <input className={classes.input} value={pair[item].key} ref={'key'+item} placeholder="key" onChange={(e) => this.changeValue(item, 'key', e.target.value)}  />
+            <input className={classes.input} value={pair[item].value} ref={'value'+item} placeholder="value" onChange={(e) => this.changeValue(item, 'value', e.target.value)}  />
             <button className={classes.remove} onClick={(e) => this.removeLine(item)}>remove</button>
           </li>
         )
@@ -107,8 +107,8 @@ export default class KeyValue extends React.Component {
       <ul className={classes['key-value']} className={classes.list}>
         {items}
         <li className={classes.item}>
-          <input className={classes.input} placeholder="key" ref="newKey" onInput={(e) => this.addLine('key', e.target.value)} />
-          <input className={classes.input} placeholder="value" ref="newValue" onInput={(e) => this.addLine('value', e.target.value)} />
+          <input className={classes.input} placeholder="key" ref="newKey" onChange={(e) => this.addLine('key', e.target.value)} />
+          <input className={classes.input} placeholder="value" ref="newValue" onChange={(e) => this.addLine('value', e.target.value)} />
           <div className={classes.remove}>&nbsp;</div>
         </li>
       </ul>
