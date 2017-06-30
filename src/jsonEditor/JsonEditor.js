@@ -38,7 +38,8 @@ export default class JsonEditor extends React.Component {
       mode: 'code',
       history: false,
       search: true,
-      onChange: this.onChange
+      onChange: this.onChange,
+      modes: ['view', 'code']
     };
     this.editor = new JSONEditor(container, options);
     var json = this.props.value;
@@ -57,7 +58,7 @@ export default class JsonEditor extends React.Component {
     }
   }
 
-  switchView = () => {
+  changeEditMode = () => {
     this.editor.aceEditor.setReadOnly(this.state.editable);
     this.setState({
       editable: !this.state.editable
@@ -68,8 +69,9 @@ export default class JsonEditor extends React.Component {
     const {classes} = this.props;
     return (
       <div>
-        <button onClick={this.switchView.bind(this)} className={classnames(classes.switch, 'button')}>switch mode</button>
-        <div ref="jsoneditor" className={classes.jsoneditor}></div>
+        <button onClick={this.changeEditMode.bind(this)} className={classnames(classes.switch, 'button')} >{ this.state.editable ? 'save' : 'edit' }</button>
+        <button onClick={this.changeView} >switch</button>
+        <div ref="jsoneditor" className={classes.jsoneditor} style={{height: this.props.height}}></div>
       </div>
     );
   }
