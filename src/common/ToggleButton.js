@@ -5,14 +5,16 @@ import classNames from 'classnames';
 
 const styles = {
   container : {
-    padding:'3px 0',
-    position:'relative'
+    padding:'2px 0',
+    position:'relative',
+    display: 'inline-block'
   },
   triggerContainer : {
     height: '12px',
     width: '28px',
     borderRadius: '100px',
     background: cssConstants.toggleBg,
+    display: 'inline-block'
   },
   trigger: {
     height: '18px',
@@ -22,11 +24,12 @@ const styles = {
     position: 'absolute',
     left: 0,
     top: 0,
-    transition:'left 200ms'
+    transition:'left 200ms, background 200ms'
   },
   triggerActive : {
     left: '10px',
     background: cssConstants.toggleActive,
+    transition:'left 200ms, background 200ms'
   }
 }
 
@@ -39,8 +42,9 @@ export default class ToggleButton extends React.Component {
     };
   }
   changeToggleState(e){
-    this.setState({toggleState: !this.state.toggleState});
-    if(this.props.onChange)this.props.onChange(this.state.toggleState);
+    this.setState({toggleState: !this.state.toggleState}, () => {
+      if(this.props.onChange)this.props.onChange(this.state.toggleState);
+    });
   }
   render() {
     const {classes} = this.props;
@@ -49,8 +53,8 @@ export default class ToggleButton extends React.Component {
       [classes.triggerActive]: this.state.toggleState
     })
     return (
-      <div className={classes.container}>
-        <div className={classes.triggerContainer} onClick={this.changeToggleState.bind(this)}></div>
+      <div className={classes.container} onClick={this.changeToggleState.bind(this)}>
+        <div className={classes.triggerContainer}></div>
         <div className={trigger}></div>
       </div>
 
