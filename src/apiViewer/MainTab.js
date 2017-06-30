@@ -13,7 +13,7 @@ const styles = {
     lineHeight:'40px'
   },
   tab:{
-    color:cssConstants.purple,
+    color:'#666',
     width:'50%',
     textAlign:'center'
   },
