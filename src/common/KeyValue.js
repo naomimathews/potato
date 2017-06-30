@@ -1,21 +1,26 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import {cssConstants} from '../common/cssConstants';
+import classnames from 'classnames';
 
 const styles = {
-  'key-value': {
-    margin: '20px auto'
-  },
   list: {
+    margin: '20px auto',
+    border: '1px solid '+cssConstants.darkBlue,
     paddingLeft: '0'
   },
   item: {
     listStyle: 'none',
     display: 'flex',
   },
+  heading: {
+    fontWeight: 'bold',
+    fontSize: '16px;'
+  },
   input: {
     flex: '1 1 100%',
-    padding: '5px',
+    padding: '5px 10px',
+    border: '1px solid #eee',
     '&:focus': {
       background: '#efefef',
       outline: 'none',
@@ -24,9 +29,8 @@ const styles = {
   },
   remove: {
     background: 'transparent',
-    border: 'none',
-    flex: '0 0 60px',
-    color: 'red'
+    border: '1px solid #efefef',
+    flex: '0 0 70px',
   }
 }
 
@@ -36,17 +40,18 @@ export default class KeyValue extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pair: {
-        'field0': {
-          key: 'one',
-          value: 'first'
-        },
-        'field1': {
-          key: 'two',
-          value: 'second'
-        }
-      }
+      pair: {}
     };
+  }
+
+  saveValues = (values) => {
+    if (this.props.onChange) {
+      let pairs = [];
+      for (var pair in values) {
+        pairs.push(values[pair]);
+      }
+      this.props.onChange(pairs);
+    }
   }
 
   addLine = (type, value) => {
@@ -67,7 +72,7 @@ export default class KeyValue extends React.Component {
       this.refs.newKey.value = '';
       this.refs.newValue.value = '';
       this.refs[type+'field'+(length)].focus();
-      if (this.props.onChange) this.props.onChange(this.state.pair);
+      this.saveValues(this.state.pair);
     });
   }
 
@@ -75,7 +80,7 @@ export default class KeyValue extends React.Component {
     const newState = Object.assign({}, this.state);
     newState.pair[itemId][type] = value;
     this.setState(newState, () => {
-      if (this.props.onChange) this.props.onChange(this.state.pair);
+      this.saveValues(this.state.pair);
     });
   }
 
@@ -83,7 +88,7 @@ export default class KeyValue extends React.Component {
     const newState = Object.assign({}, this.state);
     delete newState.pair[itemId];
     this.setState(newState, () => {
-      if (this.props.onChange) this.props.onChange(this.state.pair);
+      this.saveValues(this.state.pair);
     });
   }
 
@@ -104,7 +109,12 @@ export default class KeyValue extends React.Component {
       renderItem.call(this, item);
     }
     return (
-      <ul className={classes['key-value']} className={classes.list}>
+      <ul className={classes.list}>
+        <li className={classes.item}>
+          <input className={classnames(classes.input, classes.heading)} value="Key" readOnly="readOnly" />
+          <input className={classnames(classes.input, classes.heading)} value="Value" readOnly="readOnly" />
+          <button className={classnames(classes.remove, classes.heading)}>Action</button>
+        </li>
         {items}
         <li className={classes.item}>
           <input className={classes.input} placeholder="key" ref="newKey" onChange={(e) => this.addLine('key', e.target.value)} />
