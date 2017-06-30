@@ -53,9 +53,26 @@ module.exports = {
     new CompressionPlugin()
   ],
   module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/, loader: "file-loader" }
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          'babel-loader'
+        ],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          'file-loader'
+        ]
+      }
     ]
   },
   devtool: "cheap-module-source-map"
