@@ -13,10 +13,13 @@ module.exports = {
     vendor: [
       'react',
       'react-dom',
+      'jss',
       'react-jss',
+      'jss-global',
       'classnames',
       'react-router',
-      'react-helmet'
+      'jsoneditor',
+      'react-rte'
     ]
   },
   output: {
