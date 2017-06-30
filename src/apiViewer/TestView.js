@@ -12,14 +12,13 @@ const styles = {
 export default class DocView extends React.Component {
   constructor(props) {
     super(props);
-    console.log(cssConstants);
   }
 
   render() {
     const {classes} = this.props;
     return (
       <div>
-              <h1>working apiviewer</h1>
+        <h1>working testviewer</h1>
         <JsonEditor />
         <TextEditor />
       </div>

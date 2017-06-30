@@ -28,7 +28,6 @@ const styles = {
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
-    console.log(cssConstants);
   }
 
   render() {
