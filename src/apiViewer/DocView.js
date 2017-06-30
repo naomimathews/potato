@@ -42,6 +42,7 @@ export default class DocView extends React.Component {
         <JsonEditor
           value={this.props.api.sampleRequest}
           onChange={this.onRequestChange.bind(this)}
+          height={'200px'}
           editable={true} />
         <div>Response</div>
         <JsonEditor
