@@ -1,6 +1,8 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import {cssConstants} from '../common/cssConstants';
+import classNames from 'classnames';
+// var classNames = require('classnames');
 
 const styles = {
   btn:{
@@ -27,13 +29,14 @@ export default class Button extends React.Component {
 
   render() {
     const {classes} = this.props;
-    let className = {
-      classes.btn: true,
-      classes.purpleBtn : this.props.style == "purple",
-      classes.blueBtn : this.props.style == "blue",
-    }
+    let btnClass = classNames({
+      btn: true,
+      purpleBtn : this.props.style == "purple",
+      blueBtn : this.props.style == "blue",
+    });
+
     return (
-      <button className={className}>{this.props.text}</button>
+      <button className={btnClass}>{this.props.text}</button>
     );
   }
 }

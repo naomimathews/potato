@@ -7,10 +7,11 @@ const styles = {
     background: cssConstants.darkBlue,
     color: cssConstants.white,
     position: 'relative',
-    padding:'8px 10px'
+    padding:'3px 10px',
+    height:"54px"
   },
   logo: {
-    margin:0
+    height:"48px"
   },
   settingsBtn :{
     position: 'absolute',
@@ -33,7 +34,7 @@ export default class Header extends React.Component {
     const {classes} = this.props;
     return (
       <div className={classes.container}>
-        <h1 className={classes.logo}>Logo</h1>
+        <img src={require('../../assets/logo.png')} className={classes.logo}/>
         <div className={classes.settingsBtn}>Settings</div>
       </div>
 
