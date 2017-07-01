@@ -38,7 +38,7 @@ export default class SideMenu extends React.Component {
   render() {
     const {classes} = this.props;
     var apiList= this.props.apiList.map((api, index) => {
-      if (index === 0) return <div className={classes.newApi} onClick={this.props.newApi} key={api._id}>+ Add API</div>
+      if (index === 0) return <div className={classes.newApi} onClick={this.props.newApi} key={api._id}>+ ADD API</div>
       return <ApiListItem api={api} currApiId={this.props.currApiId} key={api._id} fetchApis={this.props.fetchApis} onClick={() => this.selectApi(api._id)}/>
     });
     return (

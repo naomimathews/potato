@@ -5,30 +5,29 @@ import classNames from 'classnames';
 
 const styles = {
   container : {
-    border:'solid 1px'+cssConstants.darkBlue,
+    border:'solid 1px'+cssConstants.bgBlue,
     borderRadius: '5px',
-    width:'200px',
-    height:'40px',
+    width:'160px',
+    height:'25px',
     display:'flex',
-    lineHeight:'40px'
+    lineHeight:'25px'
   },
   tab:{
     color:'#666',
     width:'50%',
     textAlign:'center',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    fontSize: '14px',
+    fontWeight: 'lighter'
   },
   selectedTab:{
-    backgroundColor:cssConstants.darkBlue,
-    color:cssConstants.white
-  },
-  tab1:{
-    borderRight:'solid 1px'+cssConstants.darkBlue
+    backgroundColor:cssConstants.bgBlue,
+    color:cssConstants.darkBlue
   }
 }
 
 @injectSheet(styles)
-export default class MainTab extends React.Component {
+export default class Tabs extends React.Component {
   constructor(props) {
     super(props);
 
@@ -42,8 +41,7 @@ export default class MainTab extends React.Component {
           this.props.tabs.map((tab, index) => {
             let tabClass = classNames({
               [classes.tab]: true,
-              [classes.selectedTab] : tab.viewId == this.props.selectedTabId,
-              [classes.tab1] : tab.viewId==1
+              [classes.selectedTab] : tab.viewId == this.props.selectedTabId
             });
 
             return (
