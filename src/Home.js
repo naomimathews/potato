@@ -39,7 +39,7 @@ export default class Home extends React.Component {
     }
   }
 
-  fetchApis = () => {
+  fetchApis = (clear) => {
     superagent
     .get(jsConstants.baseUrl+'/api/potato-crud/read/v1.0/listApis')
     .then(res => {
@@ -57,7 +57,11 @@ export default class Home extends React.Component {
         headers: [],
         proxy: true
       }, ...res.body];
-      newState.currApiId = '';
+
+      if (clear) {
+        newState.currApiId = '';
+      }
+
       this.setState(newState);
     }, err => {
       console.log(err);

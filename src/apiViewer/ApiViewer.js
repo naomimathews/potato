@@ -110,7 +110,7 @@ export default class ApiViewer extends React.Component {
     .send({
     	id: this.state.api._id
     })
-    .then(res => this.props.fetchApis(), err => console.log(err))
+    .then(res => this.props.fetchApis(true), err => console.log(err))
   }
 
   render() {
