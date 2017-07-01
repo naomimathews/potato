@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 const styles = {
   container : {
-    padding:'2px 0',
+    padding:'3px 0',
     position:'relative',
     display: 'inline-block'
   },
