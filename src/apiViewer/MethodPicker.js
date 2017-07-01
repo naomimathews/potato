@@ -21,6 +21,9 @@ const styles = {
     padding: '0 20px',
     background: '#DDD'
   },
+  chevron:{
+    height:'10px'
+  },
   dropdownList:{
     background:cssConstants.bgLightBlue,
     position: 'absolute',
