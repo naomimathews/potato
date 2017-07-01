@@ -10,7 +10,8 @@ const styles = {
     width:'160px',
     height:'25px',
     display:'flex',
-    lineHeight:'25px'
+    lineHeight:'25px',
+    overflow: 'hidden'
   },
   tab:{
     color:'#666',
@@ -18,7 +19,8 @@ const styles = {
     textAlign:'center',
     cursor: 'pointer',
     fontSize: '14px',
-    fontWeight: 'lighter'
+    fontWeight: 'lighter',
+    background: 'white'
   },
   selectedTab:{
     backgroundColor:cssConstants.bgBlue,

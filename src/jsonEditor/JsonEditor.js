@@ -13,15 +13,9 @@ const styles = {
     height: '500px',
   },
   switch: {
-    // marginBottom: '10px',
-    // textAlign: 'right',
-    // position: 'absolute',
-    // top: '9px',
-    // left: '75px',
     zIndex: '2',
-    // color: 'white'
     position: 'absolute',
-    right: '10px',
+    right: '20px',
     top: '50px'
   },
   toggleSwitch: {

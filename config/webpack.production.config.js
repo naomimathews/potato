@@ -11,15 +11,17 @@ module.exports = {
       './src/index.prod.js'
     ],
     vendor: [
+      'classnames',
+      'jsoneditor',
+      'jss',
+      'jss-global',
+      'jss-preset-default',
       'react',
       'react-dom',
-      'jss',
       'react-jss',
-      'jss-global',
-      'classnames',
       'react-router',
-      'jsoneditor',
-      'react-rte'
+      'react-rte',
+      'superagent'
     ]
   },
   output: {
@@ -33,15 +35,17 @@ module.exports = {
       verbose: true
     }),
     new HtmlWebpackPlugin({
-      title: 'Welcome',
-      template: './src/index.ejs',
-      appMountId: 'root'
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Welcome',
+      title: 'Potato',
       template: './src/index.ejs',
       appMountId: 'root',
-      filename: '200.html'
+      favicon: './assets/images/favicon.png'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Potato',
+      template: './src/index.ejs',
+      appMountId: 'root',
+      filename: '200.html',
+      favicon: './assets/images/favicon.png'
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin("vendor"),

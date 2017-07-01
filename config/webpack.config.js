@@ -15,9 +15,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Welcome',
+      title: 'Potato',
       template: './src/index.ejs',
-      appMountId: 'root'
+      appMountId: 'root',
+      favicon: './assets/images/favicon.png'
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HotModuleReplacementPlugin(), // Enable HMR
