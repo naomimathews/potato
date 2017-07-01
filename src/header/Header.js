@@ -1,6 +1,7 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import {cssConstants} from '../common/cssConstants';
+import SettingsPopup from './settingsPopup';
 
 const styles = {
   container : {
@@ -19,7 +20,7 @@ const styles = {
     right:'10px',
     transform : 'translateY(-50%)',
     textTransform: 'capitalize',
-    fontFamily:'Ubuntu'
+    cursor: 'pointer',
   }
 
 }
@@ -28,6 +29,21 @@ const styles = {
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      settingsOpen: false
+    }
+  }
+
+  openSettings = () => {
+    this.setState({
+      settingsOpen: true
+    });
+  }
+
+  closeSettings = () => {
+    this.setState({
+      settingsOpen: false
+    });
   }
 
   render() {
@@ -35,9 +51,9 @@ export default class Header extends React.Component {
     return (
       <div className={classes.container}>
         <img src={require('../../assets/images/logo.png')} className={classes.logo}/>
-        <div className={classes.settingsBtn}>Settings</div>
+        <div className={classes.settingsBtn} onClick={this.openSettings}>Settings</div>
+        <SettingsPopup open={this.state.settingsOpen} onClose={this.closeSettings} />
       </div>
-
     );
   }
 }

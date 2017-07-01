@@ -53,7 +53,7 @@ export default class ToggleButton extends React.Component {
       [classes.triggerActive]: this.state.toggleState
     })
     return (
-      <div className={classes.container} onClick={this.changeToggleState.bind(this)}>
+      <div className={classNames(this.props.className, classes.container)} onClick={this.changeToggleState.bind(this)}>
         <div className={classes.triggerContainer}></div>
         <div className={trigger}></div>
       </div>
