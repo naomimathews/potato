@@ -27,7 +27,8 @@ const sheet = jss.createStyleSheet({
       }
     ],
     '*': {
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
+      outline: 'none !important'
     },
     body: {
       margin: '0',

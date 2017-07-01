@@ -44,7 +44,7 @@ module.exports = {
       }
     ]
   },
-  devtool: "eval",
+  devtool: "cheap-module-source-map",
   devServer: {
     hot: true,
     contentBase: path.join("./dist"),

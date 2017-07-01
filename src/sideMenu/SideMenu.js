@@ -11,15 +11,16 @@ const styles = {
     minHeight: 'calc(100vh - 55px)',
     width: '250px',
     fontSize: '16px',
-    color:cssConstants.white
-
+    color:cssConstants.white,
+    overflow: 'auto'
   },
   newApi:{
     background:cssConstants.greenGradient,
     height:'70px',
     lineHeight:'70px',
     color:'white',
-    padding:'0px 20px'
+    padding:'0px 20px',
+    cursor: 'pointer'
   }
 }
 
@@ -30,14 +31,18 @@ export default class SideMenu extends React.Component {
     super(props);
   }
 
+  selectApi = (apiId) => {
+    if (this.props.onSelectApi) this.props.onSelectApi(apiId);
+  }
+
   render() {
     const {classes} = this.props;
     var apiList= this.props.apiList.map((api, index) => {
-      return <ApiListItem api={api} currApiId={this.props.currApiId} key={api.id}/>
+      if (index === 0) return <div className={classes.newApi} onClick={this.props.newApi} key={api._id}>+ Add API</div>
+      return <ApiListItem api={api} currApiId={this.props.currApiId} key={api._id} fetchApis={this.props.fetchApis} onClick={() => this.selectApi(api._id)}/>
     });
     return (
       <div className={classes.container}>
-        <div className={classes.newApi}>+ Add API</div>
         {apiList}
       </div>
 

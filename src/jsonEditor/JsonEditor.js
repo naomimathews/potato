@@ -5,12 +5,20 @@ import classnames from 'classnames';
 import ToggleButton from '../common/ToggleButton';
 
 const styles = {
+  editor: {
+    position: 'relative'
+  },
   jsoneditor: {
-    height: '500px'
+    height: '500px',
   },
   switch: {
     marginBottom: '10px',
-    textAlign: 'right'
+    textAlign: 'right',
+    position: 'absolute',
+    top: '9px',
+    left: '75px',
+    zIndex: '2',
+    color: 'white'
   },
   toggleSwitch: {
     margin: '0 10px'
@@ -81,7 +89,7 @@ class JsonEditor extends React.Component {
   render() {
     const {classes} = this.props;
     return (
-      <div>
+      <div className={classes.editor}>
         <div className={classes.switch}>
           <span>JSON</span>
           <ToggleButton onChange={this.toggleView} className={classes.toggleSwitch} />

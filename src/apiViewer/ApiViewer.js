@@ -1,6 +1,8 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import {cssConstants} from '../common/cssConstants';
+import jsConstants from '../common/jsConstants';
+import superagent from 'superagent';
 
 import DocView from './DocView';
 import TestView from './TestView';
@@ -9,13 +11,14 @@ import MainTab from './MainTab';
 const styles = {
   container : {
     flex:1,
-    padding: '30px 70px'
+    padding: '30px 70px',
+    overflow: 'auto'
   }
 
 }
 
 @injectSheet(styles)
-export default class SideMenu extends React.Component {
+export default class ApiViewer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,6 +38,14 @@ export default class SideMenu extends React.Component {
     }
   }
 
+  componentWillReceiveProps = (newProps) => {
+    if (newProps.currApi !== this.props.currApi) {
+      this.setState({
+        api: newProps.currApi
+      })
+    }
+  }
+
   changeTab = (tab) => {
     this.setState({
       selectedViewId: tab
@@ -46,6 +57,28 @@ export default class SideMenu extends React.Component {
     this.setState({api: changeApiObj, isDocsEdited: true});
   }
 
+  saveApi = () => {
+    let newState = Object.assign({}, this.state);
+    if (newState.api.sampleRequest) {
+      newState.api.request = newState.api.sampleRequest;
+      delete newState.api.sampleRequest;
+    }
+    if (newState.api.sampleResponse) {
+      newState.api.response = newState.api.sampleResponse;
+      delete newState.api.sampleResponse;
+    }
+    this.setState(newState, () => {
+      console.log(this.state.api);
+
+      const url = this.props.newApiMode ? 'createApi' : 'editApi';
+
+      superagent
+      .post(jsConstants.baseUrl+'/api/potato-crud/write/v1.0/'+url)
+      .send(this.state.api)
+      .then(res => this.props.fetchApis(), err => console.log(err))
+    });
+  }
+
   render() {
     const {classes} = this.props;
     return (
@@ -54,10 +87,9 @@ export default class SideMenu extends React.Component {
         {
           this.state.selectedViewId == 2 ?
             <TestView api={this.state.api} onApiChange={this.onApiChange.bind(this)}/> :
-            <DocView api={this.state.api} onApiChange={this.onApiChange.bind(this)}/>
+            <DocView api={this.state.api} onApiChange={this.onApiChange.bind(this)} saveApi={this.saveApi.bind(this)}/>
         }
       </div>
-
     );
   }
 }

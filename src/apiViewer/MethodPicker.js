@@ -8,20 +8,30 @@ const styles = {
   container:{
     textTransform : 'uppercase',
     color:cssConstants.fontBlue,
-    position:'relative'
+    position:'relative',
+    cursor: 'pointer'
   },
   button:{
     background:cssConstants.bgLightBlue,
-    width: '160px',
+    width: '100px',
     height: '44px',
+    borderBottomLeftRadius: '8px',
     borderTopLeftRadius: '8px',
-    borderBottomLeftRadius: '8px'
+    lineHeight: '44px',
+    padding: '0 20px',
+    background: '#DDD'
   },
   dropdownList:{
     background:cssConstants.bgLightBlue,
     position: 'absolute',
     left:0,
-    top:'46px'
+    top:'calc(100% - 10px)',
+    width: '100%',
+    padding: '10px 0 20px 10px',
+    borderBottomLeftRadius: '8px',
+    borderBottomRightRadius: '8px',
+    background: '#DDD',
+    zIndex: '5'
   },
   dropdownListItem:{
     height: '30px',
@@ -33,28 +43,54 @@ const styles = {
 export default class Button extends React.Component {
   constructor(props) {
     super(props);
+    this.methods = ['GET','POST', 'PUT', 'DELETE'];
     this.state = {
-      methods :['GET','POST', 'PUT', 'DELETE'],
-      selectedMethod: this.props.selectedProp || 'GET'
+      selectedMethod: this.props.selectedProp || 'GET',
+      open: false
     };
   }
-  changeMethod(method){
+
+  componentWillReceiveProps = (newProps) => {
+    if (newProps.selectedProp !== this.props.selectedProp) {
+      this.setState({
+        selectedMethod: newProps.selectedProp
+      })
+    }
+  }
+
+  toggleDropDown = () => {
+    this.setState({
+      open: !this.state.open
+    });
+  }
+
+  closeDropDown = () => {
+    this.setState({
+      open: false
+    });
+  }
+
+  changeMethod = (method)=>{
     this.setState({selectedMethod:method});
     this.props.onChange(method);
+    this.closeDropDown();
   }
 
   render() {
     const {classes} = this.props;
     return (
-      <div>
-        <div className={classes.button}></div>
-        <div className={classes.dropdownList}>
-          {
-            this.state.methods.map((method, index) => {
-              <div className={classes.dropdownListItem} onClick={ () => { this.changeMethod(method) }}>{method}</div>
-            })
-          }
-        </div>
+      <div tabIndex="1" onBlur={this.closeDropDown} className={classes.container}>
+        <div className={classes.button} onClick={this.toggleDropDown}>{this.state.selectedMethod}</div>
+        {
+          this.state.open &&
+          <div className={classes.dropdownList}>
+            {
+              this.methods.map((method, index) => {
+                return (<div key={index} className={classes.dropdownListItem} onClick={ () => { this.changeMethod(method) }}>{method}</div>)
+              })
+            }
+          </div>
+        }
       </div>
     );
   }
