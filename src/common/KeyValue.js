@@ -15,7 +15,8 @@ const styles = {
   },
   heading: {
     fontWeight: 'bold',
-    fontSize: '16px;'
+    fontSize: '16px',
+    color:'#55586f'
   },
   input: {
     flex: '1 1 100%',

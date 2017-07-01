@@ -14,7 +14,6 @@ const styles = {
   tab:{
     color:cssConstants.darkBlue,
     width:'50%',
-    textAlign:'center',
     cursor: 'pointer',
     opacity:0.5,
     fontSize:'24px'
@@ -27,12 +26,15 @@ const styles = {
     bottom:0,
     left:0,
     height:'3px',
-    width:'50%',
+    width:'45%',
     transition:'left 200ms',
     backgroundColor: cssConstants.green
   },
   secondPosition:{
     left:'50%'
+  },
+  smaller:{
+    fontSize:'18px'
   }
 }
 
@@ -55,7 +57,8 @@ export default class MainTab extends React.Component {
           this.props.tabs.map((tab, index) => {
             let tabClass = classNames({
               [classes.tab]: true,
-              [classes.selectedTab] : tab.viewId == this.props.selectedTabId
+              [classes.selectedTab] : tab.viewId == this.props.selectedTabId,
+              [classes.smaller]:this.props.smaller
             });
 
             return (

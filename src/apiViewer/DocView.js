@@ -25,7 +25,7 @@ const styles = {
     flex: '1',
     paddingLeft: '30px',
     fontFamily: 'Proxima',
-    fontSize: '20px',
+    fontSize: '16px',
     color: '#55586f',
     borderBottomRightRadius: '8px',
     borderTopRightRadius: '8px',
@@ -33,7 +33,8 @@ const styles = {
     background: '#EEE'
   },
   subHeading: {
-    marginTop: '20px'
+    marginTop: '20px',
+    color:'#55586f'
   },
   subTabs: {
     marginBottom: '20px'
@@ -136,7 +137,7 @@ export default class DocView extends React.Component {
             <button className={classes.saveButton} onClick={this.props.saveApi}>save</button>
           </div>
           <h2 className={classes.subHeading}>Request</h2>
-          <MainTab tabs={this.state.tabs} selectedTabId={this.state.selectedViewId} changeTab={this.changeTab.bind(this)} className={classes.subTabs} />
+          <MainTab tabs={this.state.tabs} selectedTabId={this.state.selectedViewId} changeTab={this.changeTab.bind(this)} className={classes.subTabs} smaller={true}/>
         </div>
         {
           this.state.selectedViewId === 1 ?
