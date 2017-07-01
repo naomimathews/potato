@@ -52,7 +52,7 @@ export default class Header extends React.Component {
       <div className={classes.container}>
         <img src={require('../../assets/images/logo.png')} className={classes.logo}/>
         <div className={classes.settingsBtn} onClick={this.openSettings}>Settings</div>
-        <SettingsPopup open={this.state.settingsOpen} onClose={this.closeSettings} />
+        <SettingsPopup baseUrl={this.props.baseUrl} open={this.state.settingsOpen} onClose={this.closeSettings} />
       </div>
     );
   }

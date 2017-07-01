@@ -34,7 +34,8 @@ export default class Home extends React.Component {
         headers: [],
         proxy: true
       }],
-      currApiId: ''
+      currApiId: '',
+      baseUrl: ''
     }
   }
 
@@ -64,6 +65,13 @@ export default class Home extends React.Component {
 
   componentDidMount = () => {
     this.fetchApis();
+    superagent
+    .get(jsConstants.baseUrl+'/api/potato-crud/read/v1.0/getBaseUrl')
+    .then(res => {
+      this.setState({
+        baseUrl: res.body.baseUrl
+      })
+    })
   }
 
   selectApi = (id) => {
@@ -89,7 +97,7 @@ export default class Home extends React.Component {
     const newApiMode = this.state.currApiId.length ? false : true;
     return (
       <div className={classes.home}>
-        <Header/>
+        <Header baseUrl={this.state.baseUrl} />
         <div className={classes.mainContainer}>
           <SideMenu
             apiList={this.state.apiList}
@@ -98,6 +106,7 @@ export default class Home extends React.Component {
             onSelectApi={this.selectApi.bind(this)}
             newApi={this.newApi.bind(this)} />
           <ApiViewer
+            baseUrl={this.state.baseUrl}
             currApi={currApiObj}
             newApiMode={newApiMode}
             fetchApis={this.fetchApis} />

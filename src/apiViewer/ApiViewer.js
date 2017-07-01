@@ -26,9 +26,6 @@ export default class ApiViewer extends React.Component {
         {
           viewId: 1,
           name: "Docs"
-        }, {
-          viewId: 2,
-          name: "Test"
         }
       ],
       selectedViewId: 1,
@@ -55,6 +52,34 @@ export default class ApiViewer extends React.Component {
   onApiChange = (apiChanges) => {
     let changeApiObj = Object.assign({}, this.state.api, apiChanges);
     this.setState({api: changeApiObj, isDocsEdited: true});
+  }
+
+  saveResponse = (res) => {
+    console.log(res);
+    let newState = Object.assign({}, this.state);
+    newState.api.response = res.body;
+    this.setState(newState);
+  }
+
+  testApi = () => {
+    if (this.state.api.method.toLowerCase() === 'get') {
+      let url = (this.state.api._id);
+      if (url[0] === '/') {
+        url = url.substring(1, url.length);
+      }
+      superagent
+      .get(this.props.baseUrl+url)
+      .then(res => this.saveResponse.bind(this)(res), err => console.log(err))
+    } else {
+      let newState = Object.assign({}, this.state);
+      if (newState.api.sampleRequest) {
+        newState.api.request = newState.api.sampleRequest;
+        delete newState.api.sampleRequest;
+      }
+      superagent[this.state.api.method.toLowerCase()](this.props.baseUrl+url)
+      .send(this.state.api.request)
+      .then(res => this.saveResponse.bind(this)(res), err => console.log(err));
+    }
   }
 
   saveApi = () => {
@@ -87,7 +112,11 @@ export default class ApiViewer extends React.Component {
         {
           this.state.selectedViewId == 2 ?
             <TestView api={this.state.api} onApiChange={this.onApiChange.bind(this)}/> :
-            <DocView api={this.state.api} onApiChange={this.onApiChange.bind(this)} saveApi={this.saveApi.bind(this)}/>
+            <DocView
+              api={this.state.api}
+              onApiChange={this.onApiChange.bind(this)}
+              testApi={this.testApi.bind(this)}
+              saveApi={this.saveApi.bind(this)}/>
         }
       </div>
     );

@@ -100,15 +100,15 @@ export default class DocView extends React.Component {
   }
 
   onMethodChange = (value) => {
-    this.props.onApiChange({method : value})
+    this.props.onApiChange({method : value.trim()})
   }
 
   onNotesChange = (value) => {
-    this.props.onApiChange({notes : value})
+    this.props.onApiChange({notes : value.trim()})
   }
 
   onChangeUrl = (e) => {
-    this.props.onApiChange({_id : e.target.value})
+    this.props.onApiChange({_id : e.target.value.trim()})
   }
 
   onChangeHeaders = (headers) => {
@@ -132,6 +132,7 @@ export default class DocView extends React.Component {
           <div className ={classes.urlCont}>
             <MethodPicker selectedProp={this.props.api.method} onChange={this.onMethodChange.bind(this)}/>
             <input value={this.props.api._id} className={classes.urlBar} type="text" onChange={this.onChangeUrl} />
+            <button className={classes.saveButton} onClick={this.props.testApi}>test</button>
             <button className={classes.saveButton} onClick={this.props.saveApi}>save</button>
           </div>
           <h2 className={classes.subHeading}>Request</h2>
@@ -157,7 +158,7 @@ export default class DocView extends React.Component {
           onChange={this.onResponseChange.bind(this)}
           editable={true} />
         <h2 className={classes.subHeading}>Notes</h2>
-        <TextEditor value={this.props.api.notes} onChange={this.onNotesChange.bind(this)} />
+        <TextEditor key={this.props.api._id} value={this.props.api.notes} onChange={this.onNotesChange.bind(this)} />
       </div>
 
     );

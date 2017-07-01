@@ -5,7 +5,7 @@ import {cssConstants} from '../common/cssConstants';
 
 const styles = {
   textEditor: {
-    height: '300px'
+    // height: '300px'
   }
 }
 
