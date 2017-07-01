@@ -15,7 +15,7 @@ const styles = {
 }
 
 @injectSheet(styles) // do this, else the styles won't come... very important
-export default class JsonEditor extends React.Component {
+class JsonEditor extends React.Component {
   constructor(props) {
     super(props);
     this.editor = null;
@@ -89,3 +89,9 @@ export default class JsonEditor extends React.Component {
     );
   }
 }
+
+JsonEditor.defaultProps = {
+  value: {}
+};
+
+export default JsonEditor;

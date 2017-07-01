@@ -6,6 +6,7 @@ import JsonEditor from '../jsonEditor/JsonEditor';
 import TextEditor from '../common/textEditor';
 import InputBoxPreview from '../common/InputBoxPreview';
 import ToggleButton from '../common/ToggleButton';
+import KeyValue from '../common/KeyValue';
 
 const styles = {
   basicDetailsCont:{
@@ -28,6 +29,10 @@ export default class DocView extends React.Component {
   }
   // set requestEditState = request when you want to save the values
 
+  onChangeHeaders = (headers) => {
+    console.log(headers);
+  }
+
   render() {
     const {classes} = this.props;
     return (
@@ -36,16 +41,18 @@ export default class DocView extends React.Component {
         <InputBoxPreview
           textValue = {this.props.api.name}
           onApiChange={this.props.onApiChange}/>
+        <KeyValue onChange={this.onChangeHeaders} />
         <div>Request</div>
         <JsonEditor
           value={this.props.api.sampleRequest}
           onChange={this.onRequestChange.bind(this)}
+          height={'200px'}
           editable={true} />
         <div>Response</div>
         <JsonEditor
-            value={this.props.api.sampleResponse}
-            onChange={this.onResponseChange.bind(this)}
-            editable={true} />
+          value={this.props.api.sampleResponse}
+          onChange={this.onResponseChange.bind(this)}
+          editable={true} />
         <TextEditor />
       </div>
 
