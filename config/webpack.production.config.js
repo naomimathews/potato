@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -57,7 +58,11 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new UglifyJSPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),//Merge chunks
-    new CompressionPlugin()
+    new CompressionPlugin(),
+    new CopyWebpackPlugin([{
+      from: path.resolve('./assets/static'),
+      to: path.resolve('./dist')
+    }])
   ],
   module: {
     rules: [
