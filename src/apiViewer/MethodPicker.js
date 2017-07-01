@@ -51,7 +51,7 @@ export default class Button extends React.Component {
         <div className={classes.dropdownList}>
           {
             this.state.methods.map((method, index) => {
-              <div className={classes.dropdownListItem} onClick={ () => { this.changeMethod(method) }}>{method}</div>
+              return (<div key={index} className={classes.dropdownListItem} onClick={ () => { this.changeMethod(method) }}>{method}</div>)
             })
           }
         </div>
