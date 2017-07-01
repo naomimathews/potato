@@ -18,7 +18,8 @@ const styles = {
     background:cssConstants.greenGradient,
     height:'70px',
     lineHeight:'70px',
-    color:'white'
+    color:'white',
+    padding:'0px 10px'
   }
 }
 

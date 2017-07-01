@@ -5,34 +5,25 @@ import classNames from 'classnames';
 
 const styles = {
   container : {
+    border:'solid 1px'+cssConstants.purple,
+    borderRadius: '5px',
     width:'200px',
     height:'40px',
     display:'flex',
-    lineHeight:'40px',
-    position:'relative'
+    lineHeight:'40px'
   },
   tab:{
-    color:cssConstants.darkBlue,
+    color:'#666',
     width:'50%',
     textAlign:'center',
-    cursor: 'pointer',
-    opacity:0.5,
-    fontSize:'24px'
+    cursor: 'pointer'
   },
   selectedTab:{
-    opacity:1
+    backgroundColor:cssConstants.purple,
+    color:cssConstants.white
   },
-  selectedTabMarker:{
-    position:'absolute',
-    bottom:0,
-    left:0,
-    height:'3px',
-    width:'50%',
-    transition:'left 200ms',
-    backgroundColor: cssConstants.green
-  },
-  secondPosition:{
-    left:'50%'
+  tab1:{
+    borderRight:'solid 1px'+cssConstants.purple
   }
 }
 
@@ -45,17 +36,14 @@ export default class MainTab extends React.Component {
 
   render() {
     const {classes} = this.props;
-    let markerStyle = classNames({
-      [classes.selectedTabMarker]:true,
-      [classes.secondPosition]: this.props.selectedTabId ==2
-    })
     return (
       <div className={classes.container}>
         {
           this.props.tabs.map((tab, index) => {
             let tabClass = classNames({
               [classes.tab]: true,
-              [classes.selectedTab] : tab.viewId == this.props.selectedTabId
+              [classes.selectedTab] : tab.viewId == this.props.selectedTabId,
+              [classes.tab1] : tab.viewId==1
             });
 
             return (
@@ -63,7 +51,6 @@ export default class MainTab extends React.Component {
             );
           })
         }
-        <div className={markerStyle}></div>
       </div>
 
     );

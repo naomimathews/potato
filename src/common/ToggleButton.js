@@ -28,7 +28,7 @@ const styles = {
   },
   triggerActive : {
     left: '10px',
-    background: cssConstants.toggleActive,
+    background: cssConstants.green,
     transition:'left 200ms, background 200ms'
   }
 }
