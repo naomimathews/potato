@@ -7,10 +7,13 @@ import TextEditor from '../common/textEditor';
 import InputBoxPreview from '../common/InputBoxPreview';
 import ToggleButton from '../common/ToggleButton';
 import KeyValue from '../common/KeyValue';
+import MethodPicker from './MethodPicker';
 
 const styles = {
   basicDetailsCont:{
-    background:cssConstants.lightBlue
+    background:cssConstants.bgBlue,
+    minHeight:'50px',
+    margin:'0 -70px'
   }
 }
 
@@ -37,10 +40,12 @@ export default class DocView extends React.Component {
     const {classes} = this.props;
     return (
       <div>
-        <div className={classes.basicDetailsCont}></div>
+        <div className={classes.basicDetailsCont}>
         <InputBoxPreview
           textValue = {this.props.api.name}
           onApiChange={this.props.onApiChange}/>
+        <MethodPicker />
+        </div>
         <KeyValue onChange={this.onChangeHeaders} />
         <div>Request</div>
         <JsonEditor

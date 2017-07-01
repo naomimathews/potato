@@ -5,6 +5,7 @@ var cssConstants = {
   white: "#FFFFFF",
   darkBlue: "#3e4156",
   lightBlue: "#717989",
+  bgBlue:'#e8eaef',
   greenGradient :'linear-gradient(to bottom, #81d0b2, #23ac74)',
   green:"#27ae77",
   grey: "#ccc",
