@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 const styles = {
   container : {
-    border:'solid 1px'+cssConstants.purple,
+    border:'solid 1px'+cssConstants.darkBlue,
     borderRadius: '5px',
     width:'200px',
     height:'40px',
@@ -19,11 +19,11 @@ const styles = {
     cursor: 'pointer'
   },
   selectedTab:{
-    backgroundColor:cssConstants.purple,
+    backgroundColor:cssConstants.darkBlue,
     color:cssConstants.white
   },
   tab1:{
-    borderRight:'solid 1px'+cssConstants.purple
+    borderRight:'solid 1px'+cssConstants.darkBlue
   }
 }
 

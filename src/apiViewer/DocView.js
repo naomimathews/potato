@@ -13,7 +13,12 @@ const styles = {
   basicDetailsCont:{
     background:cssConstants.bgBlue,
     minHeight:'50px',
-    margin:'0 -70px'
+    margin:'0 -70px',
+    padding:'10px 70px'
+  },
+  urlCont: {
+    display: 'flex',
+    width: '800px'
   }
 }
 
@@ -30,6 +35,10 @@ export default class DocView extends React.Component {
   onResponseChange = (value) => {
     this.props.onApiChange({sampleResponse : value})
   }
+
+  onMethodChange = (value) => {
+    this.props.onApiChange({method : value})
+  }
   // set requestEditState = request when you want to save the values
 
   onChangeHeaders = (headers) => {
@@ -41,10 +50,12 @@ export default class DocView extends React.Component {
     return (
       <div>
         <div className={classes.basicDetailsCont}>
-        <InputBoxPreview
-          textValue = {this.props.api.name}
-          onApiChange={this.props.onApiChange}/>
-        <MethodPicker />
+          <InputBoxPreview
+            textValue = {this.props.api.name}
+            onApiChange={this.props.onApiChange}/>
+            <div className ={classes.urlCont}>
+              <MethodPicker onChange={this.onMethodChange.bind(this)}/>
+            </div>
         </div>
         <KeyValue onChange={this.onChangeHeaders} />
         <div>Request</div>

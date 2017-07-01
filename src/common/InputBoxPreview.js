@@ -9,11 +9,18 @@ const styles = {
     border:'solid 1px '+cssConstants.grey,
     borderRadius: '5px',
     fontWeight: 'bold',
-    fontSize: '28px'
+    fontSize: '28px',
+    width: '200px',
+    background:cssConstants.white
   },
   disabledView:{
     border:'none',
-    background:cssConstants.white
+    background:cssConstants.bgBlue
+  },
+  edit:{
+    fontWeight:'lighter',
+    color:cssConstants.darkBlue,
+    opacity:0.5
   }
 
 }
@@ -45,11 +52,11 @@ export default class InputBoxPreview extends React.Component {
     var inputHtml,editTrigger;
     if(this.state.isReadOnly){
       inputHtml = <input className={inputClass} value={this.state.value} onChange = {this.onChange} disabled />;
-      editTrigger = <span onClick={this.toggleEdit}>Edit</span>;
+      editTrigger = <span className={classes.edit} onClick={this.toggleEdit}>Edit</span>;
     }
     else{
       inputHtml =  <input className={inputClass} value={this.state.value} onChange = {this.onChange} />;
-      editTrigger = <span onClick={this.toggleEdit}>Done</span>;
+      editTrigger = <span className={classes.edit} onClick={this.toggleEdit}>Done</span>;
     }
     return (
       <div>

@@ -27,7 +27,7 @@ const styles = {
     transition:'left 200ms, background 200ms'
   },
   triggerActive : {
-    left: '10px',
+    left: '11px',
     background: cssConstants.green,
     transition:'left 200ms, background 200ms'
   }

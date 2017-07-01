@@ -7,7 +7,7 @@ import ToggleButton from '../common/ToggleButton';
 
 const styles = {
   apiListItem:{
-    padding:'10px',
+    padding:'10px 20px',
     borderBottom:'solid 1px '+ cssConstants.lightBlue,
     position:'relative'
   },
@@ -17,7 +17,7 @@ const styles = {
   toggleButton:{
     position: 'absolute',
     top: '50%',
-    right:'10px',
+    right:'20px',
     transform : 'translateY(-50%)'
   }
 }

@@ -19,7 +19,7 @@ const styles = {
     height:'70px',
     lineHeight:'70px',
     color:'white',
-    padding:'0px 10px'
+    padding:'0px 20px'
   }
 }
 

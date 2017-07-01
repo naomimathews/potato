@@ -5,23 +5,27 @@ import classNames from 'classnames';
 // var classNames = require('classnames');
 
 const styles = {
-  btn:{
-    borderRadius:"2px",
-    height:"40px",
-    lineHeight:"40px",
-    color:cssConstants.white,
-    padding:"0 10px",
-    minWidth:"100px",
-    border:'none',
-    fontWeight:"bold",
-    fontSize:'16px',
-    fontFamily:'Ubuntu'
+  container:{
+    textTransform : 'uppercase',
+    color:cssConstants.fontBlue,
+    position:'relative'
   },
-  purpleBtn : {
-    background: cssConstants.purple,
+  button:{
+    background:cssConstants.bgLightBlue,
+    width: '160px',
+    height: '44px',
+    borderTopLeftRadius: '8px',
+    borderBottomLeftRadius: '8px'
   },
-  blueBtn : {
-    background: cssConstants.darkBlue
+  dropdownList:{
+    background:cssConstants.bgLightBlue,
+    position: 'absolute',
+    left:0,
+    top:'46px'
+  },
+  dropdownListItem:{
+    height: '30px',
+    padding: '10px'
   }
 }
 
@@ -29,18 +33,29 @@ const styles = {
 export default class Button extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      methods :['GET','POST', 'PUT', 'DELETE'],
+      selectedMethod: this.props.selectedProp || 'GET'
+    }
+  }
+  changeMethod(method){
+    this.setState({selectedMethod:method});
+    this.props.onChange(method);
   }
 
   render() {
     const {classes} = this.props;
-    let btnClass = classNames({
-      [classes.btn]: true,
-      [classes.purpleBtn] : this.props.btnColor == "purple",
-      [classes.blueBtn] : this.props.btnColor == "blue",
-    });
-
     return (
-      <div></div>
+      <div>
+        <div className={classes.button}></div>
+        <div className={classes.dropdownList}>
+          {
+            this.state.methods.map((method, index) => {
+              <div className={classes.dropdownListItem} onClick={ () => { this.changeMethod(method) }}>{method}</div>
+            })
+          }
+        </div>
+      </div>
     );
   }
 }
