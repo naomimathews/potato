@@ -17,8 +17,7 @@ const styles = {
     padding:'10px 70px'
   },
   urlCont: {
-    display: 'flex',
-    width: '800px'
+    display: 'flex'
   }
 }
 

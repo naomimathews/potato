@@ -36,7 +36,7 @@ export default class Button extends React.Component {
     this.state = {
       methods :['GET','POST', 'PUT', 'DELETE'],
       selectedMethod: this.props.selectedProp || 'GET'
-    }
+    };
   }
   changeMethod(method){
     this.setState({selectedMethod:method});
