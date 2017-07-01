@@ -2,6 +2,7 @@ import React from 'react';
 import injectSheet from 'react-jss';
 import {cssConstants} from '../common/cssConstants';
 import superagent from 'superagent';
+import jsConstants from '../common/jsConstants';
 
 const styles = {
   settingsPopup: {
@@ -90,9 +91,34 @@ export default class SettingsPopup extends React.Component {
     }
   }
 
+  componentDidMount = () => {
+    superagent
+    .get(jsConstants.baseUrl+'/api/potato-crud/read/v1.0/getBaseUrl')
+    .then(res => {
+      console.log(res);
+      this.setState({
+        baseUrl: res.body.baseUrl
+      });
+    }, err => {
+      console.log(err);
+    })
+  }
+
   saveBaseUrl = () => {
     const url = this.state.baseUrl;
     console.log(url);
+
+    superagent
+    .post(jsConstants.baseUrl+'/api/potato-crud/write/v1.0/createBaseUrl')
+    .send({
+      url: this.state.baseUrl
+    })
+    .then(data => {
+      console.log(data);
+      this.props.onClose();
+    }, err => {
+      console.log(err);
+    })
   }
 
   onChangeBaseUrl = (e) => {
