@@ -1,6 +1,7 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import {cssConstants} from '../common/cssConstants';
+import classnames from 'classnames';
 
 import JsonEditor from '../jsonEditor/JsonEditor';
 import TextEditor from '../common/textEditor';
@@ -54,6 +55,17 @@ const styles = {
     textTransform: 'uppercase',
     cursor: 'pointer',
     padding: '10px 30px'
+  },
+  deleteButton: {
+    padding: '0',
+    fontSize: '18px',
+    width: '42px',
+    lineHeight: '42px',
+    transition: '200ms',
+    '&:hover': {
+      transition: '200ms',
+      backgroundColor: '#7f0000'
+    }
   }
 }
 
@@ -135,6 +147,7 @@ export default class DocView extends React.Component {
             <input value={this.props.api._id} className={classes.urlBar} type="text" onChange={this.onChangeUrl} />
             <button className={classes.saveButton} onClick={this.props.testApi}>test</button>
             <button className={classes.saveButton} onClick={this.props.saveApi}>save</button>
+            <button className={classnames(classes.saveButton, classes.deleteButton)} onClick={this.props.deleteApi}>⨯</button>
           </div>
           <h2 className={classes.subHeading}>Request</h2>
           <MainTab tabs={this.state.tabs} selectedTabId={this.state.selectedViewId} changeTab={this.changeTab.bind(this)} className={classes.subTabs} smaller={true}/>

@@ -57,6 +57,7 @@ export default class Home extends React.Component {
         headers: [],
         proxy: true
       }, ...res.body];
+      newState.currApiId = '';
       this.setState(newState);
     }, err => {
       console.log(err);

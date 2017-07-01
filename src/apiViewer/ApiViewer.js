@@ -104,6 +104,15 @@ export default class ApiViewer extends React.Component {
     });
   }
 
+  deleteApi = () => {
+    superagent
+    .post(jsConstants.baseUrl+'/api/potato-crud/write/v1.0/deleteApi')
+    .send({
+    	id: this.state.api._id
+    })
+    .then(res => this.props.fetchApis(), err => console.log(err))
+  }
+
   render() {
     const {classes} = this.props;
     return (
@@ -116,6 +125,7 @@ export default class ApiViewer extends React.Component {
               api={this.state.api}
               onApiChange={this.onApiChange.bind(this)}
               testApi={this.testApi.bind(this)}
+              deleteApi={this.deleteApi.bind(this)}
               saveApi={this.saveApi.bind(this)}/>
         }
       </div>
