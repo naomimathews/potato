@@ -8,7 +8,9 @@ const styles = {
   inputBoxPreview: {
     marginBottom: '20px',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    background: '#ddd',
+    borderRadius: '8px'
   },
   input:{
     border:'solid 1px '+cssConstants.grey,
@@ -18,11 +20,12 @@ const styles = {
     width: '100%',
     background:cssConstants.white,
     padding: '10px',
-    flex: '1'
+    flex: '1',
+    border: 'none',
   },
   disabledView:{
     border:'none',
-    background:cssConstants.bgBlue
+    background:cssConstants.bgLightBlue
   },
   edit:{
     fontWeight:'lighter',
@@ -30,6 +33,7 @@ const styles = {
     opacity: '0.5',
     fontSize: '12px',
     marginLeft: '10px',
+    marginRight: '10px',
     cursor: 'pointer'
   }
 }
@@ -74,7 +78,7 @@ export default class InputBoxPreview extends React.Component {
     var inputHtml,editTrigger;
     if(this.state.isReadOnly){
       inputHtml = <input className={inputClass} value={this.state.value} onChange = {this.onChange} placeholder="API Name" disabled ref="input" />;
-      editTrigger = <span className={classes.edit} onClick={this.toggleEdit.bind(this)}>Add</span>;
+      editTrigger = <span className={classes.edit} onClick={this.toggleEdit.bind(this)}>Edit</span>;
     }
     else{
       inputHtml =  <input className={inputClass} value={this.state.value} onChange = {this.onChange} placeholder="API Name" onBlur={this.toggleEdit.bind(this)} ref="input" />;

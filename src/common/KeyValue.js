@@ -7,7 +7,7 @@ const styles = {
   list: {
     margin: '0',
     border: '1px solid '+cssConstants.darkBlue,
-    paddingLeft: '0'
+    paddingLeft: '0',
   },
   item: {
     listStyle: 'none',

@@ -62,7 +62,9 @@ const styles = {
     marginBottom: '30px',
     borderRadius: '4px',
     boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.1)',
-    border: '1px solid #DDD'
+    border: '1px solid #DDD',
+    fontFamily: 'Proxima',
+    fontSize: '18px'
   },
   saveBtn: {
     height: '40px',
