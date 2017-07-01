@@ -11,6 +11,9 @@ const styles = {
   switch: {
     marginBottom: '10px',
     textAlign: 'right'
+  },
+  toggleSwitch: {
+    margin: '0 10px'
   }
 }
 
@@ -80,9 +83,9 @@ class JsonEditor extends React.Component {
     return (
       <div>
         <div className={classes.switch}>
-          <span>Code </span>
-          <ToggleButton onChange={this.toggleView} />
-          <span> Tree</span>
+          <span>JSON</span>
+          <ToggleButton onChange={this.toggleView} className={classes.toggleSwitch} />
+          <span>Tree</span>
         </div>
         <div ref="jsoneditor" className={classes.jsoneditor} style={{height: this.props.height}}></div>
       </div>
