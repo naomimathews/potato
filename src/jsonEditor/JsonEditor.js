@@ -3,14 +3,26 @@ import JSONEditor from 'jsoneditor';
 import injectSheet from 'react-jss';
 import classnames from 'classnames';
 import ToggleButton from '../common/ToggleButton';
+import Tabs from '../common/Tabs';
 
 const styles = {
+  editor: {
+    position: 'relative'
+  },
   jsoneditor: {
-    height: '500px'
+    height: '500px',
   },
   switch: {
-    marginBottom: '10px',
-    textAlign: 'right'
+    // marginBottom: '10px',
+    // textAlign: 'right',
+    // position: 'absolute',
+    // top: '9px',
+    // left: '75px',
+    zIndex: '2',
+    // color: 'white'
+    position: 'absolute',
+    right: '10px',
+    top: '50px'
   },
   toggleSwitch: {
     margin: '0 10px'
@@ -24,7 +36,17 @@ class JsonEditor extends React.Component {
     this.editor = null;
     this.state = {
       editable: this.props.editable || false,
-      view: 'code'
+      view: 'code',
+      tabs:[
+        {
+          viewId: 0,
+          name: "Raw"
+        },
+        {
+          viewId: 1,
+          name: "Custom"
+        }
+      ]
     };
   }
 
@@ -80,14 +102,15 @@ class JsonEditor extends React.Component {
 
   render() {
     const {classes} = this.props;
+          //  <div className={classes.switch}>
+          //     <span>JSON</span>
+          //     <ToggleButton onChange={this.toggleView} className={classes.toggleSwitch} />
+          //     <span>Tree</span>
+          //   </div>
     return (
-      <div>
-        <div className={classes.switch}>
-          <span>JSON</span>
-          <ToggleButton onChange={this.toggleView} className={classes.toggleSwitch} />
-          <span>Tree</span>
-        </div>
+      <div className={classes.editor}>
         <div ref="jsoneditor" className={classes.jsoneditor} style={{height: this.props.height}}></div>
+        <div className={classes.switch}><Tabs tabs={this.state.tabs} changeTab={this.toggleView.bind(this)} selectedTabId={this.state.view == 'code'?0:1}/></div>
       </div>
     );
   }

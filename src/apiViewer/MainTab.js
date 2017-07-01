@@ -50,7 +50,7 @@ export default class MainTab extends React.Component {
       [classes.secondPosition]: this.props.selectedTabId ==2
     })
     return (
-      <div className={classes.container}>
+      <div className={classNames(this.props.className, classes.container)}>
         {
           this.props.tabs.map((tab, index) => {
             let tabClass = classNames({

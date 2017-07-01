@@ -87,37 +87,28 @@ export default class SettingsPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      baseUrl: ''
+      baseUrl: this.props.baseUrl
     }
   }
 
-  componentDidMount = () => {
-    superagent
-    .get(jsConstants.baseUrl+'/api/potato-crud/read/v1.0/getBaseUrl')
-    .then(res => {
-      console.log(res);
+  componentWillReceiveProps = (newProps) => {
+    if (newProps.baseUrl !== this.props.baseUrl) {
       this.setState({
-        baseUrl: res.body.baseUrl
+        baseUrl: newProps.baseUrl
       });
-    }, err => {
-      console.log(err);
-    })
+    }
   }
 
   saveBaseUrl = () => {
-    const url = this.state.baseUrl;
-    console.log(url);
-
+    let url = this.state.baseUrl;
+    if (url[url.length - 1] !== '/') url = '/' + url;
     superagent
     .post(jsConstants.baseUrl+'/api/potato-crud/write/v1.0/createBaseUrl')
     .send({
       url: this.state.baseUrl
     })
     .then(data => {
-      console.log(data);
       this.props.onClose();
-    }, err => {
-      console.log(err);
     })
   }
 

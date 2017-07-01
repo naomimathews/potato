@@ -5,7 +5,7 @@ import classnames from 'classnames';
 
 const styles = {
   list: {
-    margin: '20px auto',
+    margin: '0',
     border: '1px solid '+cssConstants.darkBlue,
     paddingLeft: '0'
   },
@@ -39,8 +39,12 @@ const styles = {
 export default class KeyValue extends React.Component {
   constructor(props) {
     super(props);
+    let pairs = {}, count = 0;
+    (props.data || []).forEach((pair, idx) => {
+      pairs['field'+idx] = pair;
+    })
     this.state = {
-      pair: {}
+      pair: pairs
     };
   }
 
