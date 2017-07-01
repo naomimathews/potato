@@ -8,11 +8,17 @@ import ToggleButton from '../common/ToggleButton';
 const styles = {
   apiListItem:{
     padding:'10px',
-    borderBottom:'solid 1px '+ cssConstants.darkBlue,
-    margin:'0 -10px'
+    borderBottom:'solid 1px '+ cssConstants.lightBlue,
+    position:'relative'
   },
   selectedApi:{
     background:cssConstants.darkBlue
+  },
+  toggleButton:{
+    position: 'absolute',
+    top: '50%',
+    right:'10px',
+    transform : 'translateY(-50%)'
   }
 }
 
@@ -32,7 +38,8 @@ export default class ApiListItem extends React.Component {
     return (
       <div className={btnClass}>
         <div >{this.props.api.name}</div>
-        <ToggleButton />
+        <div className={classes.toggleButton}><ToggleButton  /></div>
+
       </div>
 
 

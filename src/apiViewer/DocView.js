@@ -8,13 +8,15 @@ import InputBoxPreview from '../common/InputBoxPreview';
 import ToggleButton from '../common/ToggleButton';
 
 const styles = {
+  basicDetailsCont:{
+    background:cssConstants.lightBlue
+  }
 }
 
 @injectSheet(styles)
 export default class DocView extends React.Component {
   constructor(props) {
     super(props);
-    }
   }
 
   onRequestChange = (value) => {
@@ -30,6 +32,7 @@ export default class DocView extends React.Component {
     const {classes} = this.props;
     return (
       <div>
+        <div className={classes.basicDetailsCont}></div>
         <InputBoxPreview
           textValue = {this.props.api.name}
           onApiChange={this.props.onApiChange}/>

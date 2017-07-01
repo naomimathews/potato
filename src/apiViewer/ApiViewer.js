@@ -9,7 +9,7 @@ import MainTab from './MainTab';
 const styles = {
   container : {
     flex:1,
-    padding: '10px'
+    padding: '30px 70px'
   }
 
 }
@@ -22,10 +22,10 @@ export default class SideMenu extends React.Component {
       tabs:[
         {
           viewId: 1,
-          name: "Docs View"
+          name: "Docs"
         }, {
           viewId: 2,
-          name: "Test View"
+          name: "Test"
         }
       ],
       selectedViewId: 1,

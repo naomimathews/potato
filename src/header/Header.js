@@ -18,8 +18,7 @@ const styles = {
     top: '50%',
     right:'10px',
     transform : 'translateY(-50%)',
-    textTransform: 'capitalize',
-    fontFamily:'Ubuntu'
+    textTransform: 'capitalize'
   }
 
 }
