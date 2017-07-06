@@ -11,7 +11,8 @@ module.exports = {
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.resolve('./dist')
+    path: path.resolve('./dist/'),
+    publicPath: "/",
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -35,20 +36,23 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          'file-loader'
+          'file-loader?name=images/[name].[ext]'
         ]
       },
       {
-        test: /\.(woff|woff2|eot|ttf|svg|otf)(\?\S*)?$/,
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
         exclude: /node_modules/,
-        use: ['url-loader?limit=1024&name=[path][name].[ext]']
+        use: [
+          'file-loader?name=assets/fonts/[name].[ext]'
+        ]
       }
     ]
   },
   devtool: "cheap-module-source-map",
   devServer: {
     hot: true,
-    contentBase: path.join("./dist"),
+    contentBase: path.join("./dist/"),
+    publicPath: "/",
     compress: true,
     historyApiFallback: true,
     port: 9000

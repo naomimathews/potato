@@ -9,19 +9,19 @@ const sheet = jss.createStyleSheet({
     '@font-face': [
       {
         fontFamily: 'Proxima',
-        src: 'url("/'+require("../assets/fonts/ProximaNova-Regular.ttf")+'")',
+        src: 'url("'+require("../assets/fonts/ProximaNova-Regular.ttf")+'")',
         fontWeight: 'normal',
         fontStyle: 'normal'
       },
       {
         fontFamily: 'Proxima',
-        src: 'url("/'+require("../assets/fonts/ProximaNova-Bold.ttf")+'")',
+        src: 'url("'+require("../assets/fonts/ProximaNova-Bold.ttf")+'")',
         fontWeight: 'bold',
         fontStyle: 'normal'
       },
       {
         fontFamily: 'Proxima',
-        src: 'url("/'+require("../assets/fonts/ProximaNova-Semibold.ttf")+'")',
+        src: 'url("'+require("../assets/fonts/ProximaNova-Semibold.ttf")+'")',
         fontWeight: 'lighter',
         fontStyle: 'normal'
       }

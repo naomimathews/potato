@@ -27,12 +27,12 @@ module.exports = {
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.resolve('./dist')
+    path: path.resolve('./dist'),
+    publicPath: "/"
   },
   plugins: [
     new CleanWebpackPlugin([path.resolve('./dist')], {
       root: path.resolve('./'),
-      exclude: ['CNAME'],
       verbose: true
     }),
     new HtmlWebpackPlugin({
@@ -76,13 +76,15 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          'file-loader'
+          'file-loader?name=images/[name].[ext]'
         ]
       },
       {
-        test: /\.(woff|woff2|eot|ttf|svg|otf)(\?\S*)?$/,
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
         exclude: /node_modules/,
-        use: ['url-loader?limit=1024&name=[path][name].[ext]']
+        use: [
+          'file-loader?name=assets/fonts/[name].[ext]'
+        ]
       }
     ]
   },
